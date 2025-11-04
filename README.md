@@ -80,7 +80,7 @@ cd socialfeedplus_shubham
 
 flutter pub get
 
-# 3️⃣ (Optional) Set up Firebase
+# 3️⃣ Set up Firebase
 
 flutterfire configure
 
