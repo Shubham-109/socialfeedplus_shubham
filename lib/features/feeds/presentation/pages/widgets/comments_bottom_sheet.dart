@@ -44,7 +44,6 @@ void showCommentsBottomSheet(BuildContext context, String feedId) {
                       if (state is FeedLoaded) {}
                     },
                     builder: (context, state) {
-                      print(state.toString());
                       if (state is CommentsLoading) {
                         return const Center(child: CircularProgressIndicator());
                       } else if (state is CommentsLoaded && state.feedId == feedId) {
