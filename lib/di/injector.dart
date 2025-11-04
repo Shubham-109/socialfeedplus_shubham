@@ -29,7 +29,6 @@ import '../features/login/domain/usecases/logout_usecase.dart';
 final sl = GetIt.instance; // sl = service locator
 
 Future<void> init() async {
-  // 🔹 Firebase Core Services
   sl.registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance);
   sl.registerLazySingleton<FirebaseStorage>(() => FirebaseStorage.instance);
   sl.registerLazySingleton<FlutterSecureStorage>(() => FlutterSecureStorage());
@@ -38,12 +37,10 @@ Future<void> init() async {
   sl.registerLazySingleton<FeedRemoteDataSource>(() => FeedRemoteDataSourceImpl(firestore: sl()));
   sl.registerLazySingleton<AuthLocalDataSource>(() => AuthLocalDataSourceImpl(storage: sl()));
 
-  // 🔹 Repository
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
   sl.registerLazySingleton<CreatePostRepository>(() => CreatePostRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<FeedRepository>(() => FeedRepositoryImpl(remoteDataSource: sl(), authRepository: sl()));
 
-  // 🔹 Use Cases
   sl.registerLazySingleton(() => CheckLoginStatusUseCase(sl()));
   sl.registerLazySingleton(() => LoginUseCase(sl()));
   sl.registerLazySingleton(() => LogoutUseCase(sl()));
@@ -57,7 +54,6 @@ Future<void> init() async {
   sl.registerLazySingleton(() => FetchCommentsUseCase(sl()));
   sl.registerLazySingleton(() => AddCommentUseCase(sl()));
 
-  // 🔹 BLoC
   sl.registerFactory(() => LoginBloc(loginUseCase: sl(), checkLoginStatusUseCase: sl(), logoutUseCase: sl()));
   sl.registerFactory(() => CreatePostBloc(generateCaptionUseCase: sl(), uploadPostUseCase: sl(), uploadImageUseCase: sl()));
   sl.registerFactory(() => FeedBloc(fetchFeedsUseCase: sl(), likeFeedUseCase: sl(), addCommentUseCase: sl(), fetchCommentsUseCase: sl()));
