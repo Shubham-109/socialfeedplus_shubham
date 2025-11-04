@@ -91,3 +91,19 @@ flutter run
 # ✅ Flutter version used
 
 Flutter 3.32.4 • Dart 3.8.1
+
+# 🤖 AI Caption Generation API
+
+This app uses the Image Caption Generator API from RapidAPI to generate creative captions for uploaded images.
+
+EndPoint - https://image-caption-generator2.p.rapidapi.com/v2/captions
+
+How It Works:
+
+1. The app uploads an image to Firebase Storage.
+
+2. It sends the image URL to the API endpoint above.
+
+3. The API responds with multiple AI-generated captions.
+
+4. The user can select or edit one before posting.
