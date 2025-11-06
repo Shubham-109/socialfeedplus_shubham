@@ -28,7 +28,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Social"),
+        title: Row(children: [const Text("Social")]),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
